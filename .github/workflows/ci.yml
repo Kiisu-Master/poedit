@@ -106,11 +106,21 @@ jobs:
       run: nuget restore Poedit.sln
     - name: Build solution
       run: msbuild Poedit.sln /p:configuration=Debug
-    - name: Upload build foldert
+    - name: Prepare upload folder
+      run: |
+        mkdir upload
+        cp ./x64/Debug/Poedit.exe ./upload
+        cp ./x64/Debug/mCtrl.dll ./upload
+        cp ./x64/Debug/WinSparkle.dll ./upload
+        cp -R ./x64/Debug/Translations ./upload
+        cp -R ./x64/Debug/Resources ./upload
+        cp -R ./x64/Debug/GettextTools ./upload
+    - name: Upload build folder
       uses: actions/upload-artifact@v4
       with:
-        name: windows-build
-        path: x64/
+        name: poedit-windows-debug
+        path: upload/
+
   publish-release:
     name: Publish release tarball
     if: startsWith(github.ref, 'refs/tags/v')
