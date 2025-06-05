@@ -202,7 +202,7 @@ wxFileName FileViewer::GetFilename(wxString ref) const
     wxString without_linenumber = ref.BeforeLast(_T(':'));
     if ( !without_linenumber.IsEmpty() )
     {
-        filepath = without_linenumber
+        filepath = without_linenumber;
     }
     wxFileName filename(filepath, pathfmt);
     if ( filename.IsRelative() )
