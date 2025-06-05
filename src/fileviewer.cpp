@@ -199,7 +199,10 @@ wxFileName FileViewer::GetFilename(wxString ref) const
 
     wxPathFormat pathfmt = ref.Contains(_T('\\')) ? wxPATH_WIN : wxPATH_UNIX;
     wxFileName filename(ref.BeforeLast(_T(':')), pathfmt);
-
+    if ( filename.IsEmpty() )
+    {
+        filename = wxFileName(ref, pathfmt);
+    }
     if ( filename.IsRelative() )
     {
         wxFileName relative(filename);
