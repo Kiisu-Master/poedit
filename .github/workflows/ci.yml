@@ -112,6 +112,7 @@ jobs:
         cp ./x64/Release/Poedit.exe ./upload
         cp ./x64/Release/mCtrl.dll ./upload
         cp ./x64/Release/WinSparkle.dll ./upload
+        cp ./x64/Release/WebView2Loader.dll ./upload
         cp -R ./x64/Release/Translations ./upload
         cp -R ./x64/Release/Resources ./upload
         cp -R ./x64/Release/GettextTools ./upload
